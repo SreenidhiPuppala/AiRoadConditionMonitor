@@ -1,0 +1,10 @@
+Flask
+streamlit
+opencv-python
+opencv-contrib-python
+numpy
+Pillow
+ultralytics
+torch
+torchvision
+pandas
