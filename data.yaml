@@ -1,0 +1,12 @@
+train:
+  - datasets/RDD_SPLIT/train/images
+  - datasets/RDD_SPLIT/downloaded/images
+
+val: datasets/RDD_SPLIT/val/images
+test: datasets/RDD_SPLIT/test/images
+
+nc: 6
+names: ['D00', 'D10', 'D20', 'D40', 'G00']
+
+
+ 

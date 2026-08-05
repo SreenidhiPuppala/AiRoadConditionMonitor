@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Road Damage Detection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-image: url("/images/road.webp"); /* Background image in static/ */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */
+            height: 100%;
+            width: 100%;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        p.description {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        ul.features {
+            list-style: none;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        ul.features li {
+            margin: 8px 0;
+        }
+
+        .cta-button {
+            background-color: #ff7e00;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background-color: #e56c00;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <h1>Road Damage Detection System</h1>
+        <p class="description">A smart AI-powered system to identify and classify road damage — helping improve road safety and maintenance.</p>
+        <ul class="features">
+            <li>✔️ Detects potholes</li>
+            <li>✔️ Identifies cracks</li>
+            <li>✔️ Spots faded lane markings</li>
+        </ul>
+        <a href="/templates/upload_page.html" class="cta-button">Start Monitoring</a>
+    </div>
+</body>
+</html>

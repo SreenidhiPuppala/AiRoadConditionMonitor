@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Media - Road Damage Detection</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+    .upload-container { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0px 0px 10px #aaa; width: 400px; text-align: center; }
+    h1 { color: #007BFF; margin-bottom: 20px; }
+    label { display: block; margin-bottom: 10px; font-weight: bold; }
+    input[type="file"] { margin-bottom: 20px; }
+    .notice { font-size: 0.9rem; color: #555; margin-bottom: 20px; }
+    button { background-color: #007BFF; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+    button:hover { background-color: #006ae6; }
+    .progress-container { width: 100%; background-color: #e0e0e0; border-radius: 4px; margin-top: 20px; display: none; }
+    .progress-bar { width: 0%; height: 10px; background-color: #007BFF; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="upload-container">
+    <h1>Upload Media</h1>
+    <p class="notice">Supported formats: .mp4, .mov, .jpg, .png</p>
+    <form id="uploadForm" method="POST" action="/upload" enctype="multipart/form-data">
+      <label for="fileInput">Select Dashcam Image or Video:</label>
+      <input id="fileInput" type="file" name="media" accept="video/*,image/*" required>
+      <button type="submit">Upload & Detect</button>
+    </form>
+
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('uploadForm');
+    const progressContainer = document.getElementById('progressContainer');
+    const progressBar = document.getElementById('progressBar');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+      if (!file) return;
+
+      const formData = new FormData();
+      formData.append('media', file);
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/upload', true);
+
+      xhr.upload.onprogress = function(e) {
+        if (e.lengthComputable) {
+          const percent = (e.loaded / e.total) * 100;
+          progressContainer.style.display = 'block';
+          progressBar.style.width = percent + '%';
+        }
+      };
+
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          window.location.href = '/results';
+        } else {
+          alert('Upload failed. Please try again.');
+        }
+      };
+
+      xhr.send(formData);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+datasets/
+
+flask_venv/
+outputs/
+runs/
+__pycache__/
+*.pyc
+.DS_Store
+*.pt
